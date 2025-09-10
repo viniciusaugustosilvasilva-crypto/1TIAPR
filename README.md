@@ -1,3 +1,4 @@
 # 1TIAPR
-Para minhas aulas de Pyton
-pertence ao aluno Vinicius Augusto
+para minhas aulas de python
+
+pertence ao aluno 
