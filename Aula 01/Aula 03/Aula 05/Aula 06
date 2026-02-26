@@ -1,0 +1,31 @@
+import argparse
+import re
+import sys
+
+def count_words_in_text(text):
+    return len(re.findall(r"\b\w+\b", text, flags=re.UNICODE))
+
+def main():
+    parser = argparse.ArgumentParser(description="Conta palavras em um arquivo de texto.")
+    parser.add_argument("arquivo", nargs="?", help="Caminho para o arquivo de texto")
+    args = parser.parse_args()
+
+    fname = args.arquivo
+    if not fname:
+        fname = input("Nome do arquivo: ").strip()
+        if not fname:
+            print("Arquivo não informado.", file=sys.stderr)
+            sys.exit(1)
+
+    try:
+        with open(fname, "r", encoding="utf-8") as f:
+            text = f.read()
+    except Exception as e:
+        print(f"Erro ao abrir '{fname}': {e}", file=sys.stderr)
+        sys.exit(1)
+
+    n = count_words_in_text(text)
+    print(n)
+
+if __name__ == "__main__":
+    main()
